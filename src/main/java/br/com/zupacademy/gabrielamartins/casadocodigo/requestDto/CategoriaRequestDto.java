@@ -1,5 +1,6 @@
 package br.com.zupacademy.gabrielamartins.casadocodigo.requestDto;
 
+import br.com.zupacademy.gabrielamartins.casadocodigo.config.validation.UniqueValue;
 import br.com.zupacademy.gabrielamartins.casadocodigo.model.Categoria;
 
 import javax.validation.constraints.NotBlank;
@@ -9,6 +10,7 @@ public class CategoriaRequestDto {
 
     @NotNull
     @NotBlank
+    @UniqueValue(domainClass = Categoria.class, fieldName = "nome")
     private String nome;
 
 
