@@ -32,7 +32,7 @@ public class ProibeEmailDuplicadoAutorValidator implements Validator {
         Optional<Autor> autor = autorRepository.findByEmail(requestDto.getEmail());
 
         if(autor.isPresent()){
-            errors.rejectValue("email", "EmailUnico",  requestDto.getEmail());
+            errors.rejectValue("email", "EmailUnico");
 
         }
 
