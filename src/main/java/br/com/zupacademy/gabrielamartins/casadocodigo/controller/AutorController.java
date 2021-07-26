@@ -1,5 +1,6 @@
 package br.com.zupacademy.gabrielamartins.casadocodigo.controller;
 
+import br.com.zupacademy.gabrielamartins.casadocodigo.config.validation.ProibeEmailDuplicadoAutorValidator;
 import br.com.zupacademy.gabrielamartins.casadocodigo.model.Autor;
 import br.com.zupacademy.gabrielamartins.casadocodigo.repository.AutorRepository;
 import br.com.zupacademy.gabrielamartins.casadocodigo.requestDto.AutorRequestDto;
@@ -7,6 +8,7 @@ import br.com.zupacademy.gabrielamartins.casadocodigo.responseDto.AutorResponseD
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -18,6 +20,14 @@ public class AutorController {
 
     @Autowired
     private AutorRepository autorRepository;
+
+    @Autowired
+    private ProibeEmailDuplicadoAutorValidator proibeEmailDuplicadoAutorValidator;
+
+    @InitBinder
+    public void init(WebDataBinder binder){
+        binder.addValidators(proibeEmailDuplicadoAutorValidator);
+    }
 
     @PostMapping
     @Transactional

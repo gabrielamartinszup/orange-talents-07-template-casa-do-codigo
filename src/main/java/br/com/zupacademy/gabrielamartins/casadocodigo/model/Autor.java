@@ -30,6 +30,10 @@ public class Autor {
     @NotNull
     private LocalDateTime dataDoRegistro = LocalDateTime.now();
 
+    @Deprecated
+    public Autor() {
+    }
+
 
     public Autor(String nome, String email, String descricao) {
         this.nome = nome;
