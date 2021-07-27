@@ -5,6 +5,7 @@ import br.com.zupacademy.gabrielamartins.casadocodigo.model.Autor;
 import br.com.zupacademy.gabrielamartins.casadocodigo.model.Categoria;
 import br.com.zupacademy.gabrielamartins.casadocodigo.model.Livro;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.http.ResponseEntity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,6 +30,11 @@ public class LivroResponseDto {
         this.id = livro.getId();
         this.titulo = livro.getTitulo();
         this.dataPublicacao =  livro.getDataPublicacao();
+    }
+
+    public static List<LivroResponseDto> converteParaListaResponseDto(List<Livro> livros) {
+        return livros.stream().map(LivroResponseDto::new).collect(Collectors.toList());
+
     }
 
 
