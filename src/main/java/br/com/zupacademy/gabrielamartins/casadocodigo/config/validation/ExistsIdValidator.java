@@ -13,7 +13,7 @@ import javax.validation.ConstraintValidatorContext;
 import java.util.List;
 
 
-public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Object> {
+public class ExistsIdValidator implements ConstraintValidator<ExistsId, Object> {
 
     private String domainAttribute;
     private Class<?> klass;
@@ -22,7 +22,7 @@ public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Ob
     private EntityManager manager;
 
     @Override
-    public void initialize(UniqueValue param) {
+    public void initialize(ExistsId param) {
         domainAttribute = param.fieldName();
         klass = param.domainClass();
     }
@@ -34,7 +34,6 @@ public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Ob
         List<?> list = query.getResultList();
         Assert.state(list.size() <= 1,
                 "Foi encontrado mais de um " + klass + " com o atributo " + domainAttribute + " = " + value);
-
-        return list.isEmpty();
+        return !list.isEmpty();
     }
 }
