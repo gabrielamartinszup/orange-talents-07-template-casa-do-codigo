@@ -1,5 +1,6 @@
 package br.com.zupacademy.gabrielamartins.casadocodigo.controller;
 
+import br.com.zupacademy.gabrielamartins.casadocodigo.config.validation.NomeDeEstadoUnicoPorPais;
 import br.com.zupacademy.gabrielamartins.casadocodigo.model.Estado;
 import br.com.zupacademy.gabrielamartins.casadocodigo.repository.EstadoRepository;
 import br.com.zupacademy.gabrielamartins.casadocodigo.repository.PaisRepository;
@@ -7,10 +8,8 @@ import br.com.zupacademy.gabrielamartins.casadocodigo.requestDto.EstadoRequestDt
 import br.com.zupacademy.gabrielamartins.casadocodigo.responseDto.EstadoResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +26,14 @@ public class EstadoController {
 
     @Autowired
     PaisRepository paisRepository;
+
+    @Autowired
+    private NomeDeEstadoUnicoPorPais nomeDeEstadoUnicoPorPais;
+
+    @InitBinder
+    public void init(WebDataBinder dataBinder) {
+        dataBinder.addValidators(nomeDeEstadoUnicoPorPais);
+    }
 
     @PostMapping
     @Transactional

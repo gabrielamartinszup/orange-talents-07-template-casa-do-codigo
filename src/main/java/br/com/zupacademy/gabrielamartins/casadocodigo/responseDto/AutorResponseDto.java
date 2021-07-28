@@ -11,7 +11,7 @@ public class AutorResponseDto {
     private String nome;
     private String email;
     private String descricao;
-    private LocalDateTime dataDoRegistro;
+
 
 
     public AutorResponseDto(Autor autor) {
@@ -19,7 +19,7 @@ public class AutorResponseDto {
         this.nome = autor.getNome();
         this.email = autor.getEmail();
         this.descricao = autor.getDescricao();
-        this.dataDoRegistro = autor.getDataDoRegistro();
+
     }
 
     public Long getId() {
@@ -38,7 +38,5 @@ public class AutorResponseDto {
         return descricao;
     }
 
-    public LocalDateTime getDataDoRegistro() {
-        return dataDoRegistro;
-    }
+
 }

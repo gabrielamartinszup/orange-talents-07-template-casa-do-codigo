@@ -1,21 +1,15 @@
 package br.com.zupacademy.gabrielamartins.casadocodigo.requestDto;
 
-import br.com.zupacademy.gabrielamartins.casadocodigo.config.validation.EstadoUnico;
 import br.com.zupacademy.gabrielamartins.casadocodigo.config.validation.ExistsId;
-import br.com.zupacademy.gabrielamartins.casadocodigo.config.validation.UniqueValue;
 import br.com.zupacademy.gabrielamartins.casadocodigo.model.Estado;
 import br.com.zupacademy.gabrielamartins.casadocodigo.model.Pais;
-import br.com.zupacademy.gabrielamartins.casadocodigo.repository.EstadoRepository;
 import br.com.zupacademy.gabrielamartins.casadocodigo.repository.PaisRepository;
 import org.springframework.util.Assert;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 
-import javax.swing.text.html.Option;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.Optional;
 
-@EstadoUnico
+
 public class EstadoRequestDto {
 
     @NotBlank
