@@ -10,5 +10,6 @@ import java.util.Optional;
 public interface EstadoRepository extends JpaRepository<Estado, Long> {
 
 
-
+    @Query(value="SELECT count(1) FROM estado WHERE pais_id = :paisId", nativeQuery = true)
+    Long contaEstadoPorPais(Long paisId);
 }

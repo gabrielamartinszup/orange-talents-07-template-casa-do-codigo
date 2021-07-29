@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UniqueValue {
 
-    String message() default "{br.com.zupacademy.gabrielamartins.cada-do-codigo.UniqueValue}";
+    String message() default "{br.com.zupacademy.gabrielamartins.casadocodigo.UniqueValue}";
     Class<?> [] groups() default {};
     Class<? extends Payload>[] payload() default {};
     String fieldName();

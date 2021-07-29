@@ -1,6 +1,9 @@
 package br.com.zupacademy.gabrielamartins.casadocodigo.model;
 
+import org.springframework.util.Assert;
+
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -15,6 +18,7 @@ public class Estado {
     private String nome;
     @NotNull
     @ManyToOne
+    @Valid
     private Pais pais;
 
 
@@ -37,4 +41,15 @@ public class Estado {
     public Pais getPais() {
         return pais;
     }
+
+
+    private boolean pertenceAoPais(Long idPais) {
+        return this.pais.getId() == idPais;
+    }
+
+    public boolean naoPertenceAoPais(Long id) {
+        Assert.notNull(pais, "Não podemos ter um país nulo para fazer a comparação" );
+        return !pertenceAoPais(id);
+    }
+
 }

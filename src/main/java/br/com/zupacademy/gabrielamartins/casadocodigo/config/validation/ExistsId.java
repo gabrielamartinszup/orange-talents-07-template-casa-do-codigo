@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ExistsId {
 
-    String message() default "{br.com.zupacademy.gabrielamartins.cada-do-codigo.ExistsId}";
+    String message() default "{br.com.zupacademy.gabrielamartins.casadocodigo.ExistsId}";
     Class<?> [] groups() default {};
     Class<? extends Payload>[] payload() default {};
     String fieldName();
